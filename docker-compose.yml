@@ -34,3 +34,11 @@ services:
         volumes:
             - '.:/application'
             - './phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/8.2/fpm/conf.d/99-overrides.ini'
+
+    node:
+        image: 'node:alpine'
+        working_dir: /application
+        volumes:
+        - '.:/application'
+        command: sh -c "cd /application && npm run dev"
+        restart: always
